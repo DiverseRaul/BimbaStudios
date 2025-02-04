@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ff8800">
     <title>Nova Studios</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -11,7 +12,7 @@
     <header>
         <nav>
             <div class="logo">
-                <h1>Nova Studios</h1>
+                <h1>Nova<span style="color: #ff8800;">Studios</span></h1>
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
@@ -26,47 +27,75 @@
     <main>
         <section id="home" class="hero">
             <div class="hero-content">
-                <h1>Welcome to Nova Studios</h1>
-                <p>Creating innovative solutions for tomorrow's challenges</p>
-                <a href="#contact" class="cta-button">Get Started</a>
+                <h1>Welcome to <span style="color: #ff8800;">Nova Studios</span></h1>
+                <p>Bringing Your Digital Dreams to Life</p>
+                <p class="hero-subtitle">Game Development • Mobile Apps • Websites</p>
+                <div class="cta-wrapper">
+                    <a href="#contact" class="cta-button">Start Your Project</a>
+                </div>
             </div>
         </section>
 
         <section id="services" class="services">
-            <h2>Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="fas fa-code"></i>
-                    <h3>Web Development</h3>
-                    <p>Custom websites and web applications</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-mobile-alt"></i>
-                    <h3>Mobile Apps</h3>
-                    <p>iOS and Android development</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-paint-brush"></i>
-                    <h3>UI/UX Design</h3>
-                    <p>Beautiful and intuitive interfaces</p>
+            <div class="container">
+                <h2>Our <span style="color: #ff8800;">Services</span></h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-gamepad"></i>
+                        <h3>Game Development</h3>
+                        <p>Creating immersive gaming experiences for PC, mobile, and consoles. From concept to launch, we bring your game ideas to life.</p>
+                        <ul class="service-features">
+                            <li>Unity & Unreal Engine</li>
+                            <li>2D & 3D Games</li>
+                            <li>Cross-platform Development</li>
+                            <li>Game Design & Mechanics</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Mobile Apps</h3>
+                        <p>Building powerful, user-friendly mobile applications for iOS and Android platforms that engage and delight users.</p>
+                        <ul class="service-features">
+                            <li>Native iOS & Android</li>
+                            <li>Cross-platform Solutions</li>
+                            <li>UI/UX Design</li>
+                            <li>App Store Optimization</li>
+                        </ul>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-globe"></i>
+                        <h3>Web Development</h3>
+                        <p>Crafting modern, responsive websites and web applications that make an impact and drive results.</p>
+                        <ul class="service-features">
+                            <li>Custom Websites</li>
+                            <li>Web Applications</li>
+                            <li>E-commerce Solutions</li>
+                            <li>Progressive Web Apps</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="portfolio" class="portfolio">
-            <h2>Our Work</h2>
+            <h2>Featured <span style="color: #ff8800;">Work</span></h2>
             <div class="portfolio-grid">
                 <!-- Portfolio items will be added here -->
             </div>
         </section>
 
         <section id="about" class="about">
-            <h2>About Us</h2>
-            <p>Nova Studios is a forward-thinking company dedicated to creating innovative digital solutions. We combine creativity with technical expertise to deliver exceptional results.</p>
+            <div class="container">
+                <h2>About <span style="color: #ff8800;">Us</span></h2>
+                <div class="about-content">
+                    <p>Nova Studios is a dynamic digital creation studio specializing in game development, mobile applications, and web solutions. We combine creativity with cutting-edge technology to deliver exceptional digital experiences that engage, entertain, and inspire.</p>
+                    <p>Our team of passionate developers, designers, and creative minds work together to transform ideas into reality, whether it's an immersive game, a powerful mobile app, or a stunning website.</p>
+                </div>
+            </div>
         </section>
 
         <section id="contact" class="contact">
-            <h2>Contact Us</h2>
+            <h2>Get in <span style="color: #ff8800;">Touch</span></h2>
             <form id="contact-form">
                 <input type="text" placeholder="Name" required>
                 <input type="email" placeholder="Email" required>
