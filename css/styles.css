@@ -5,8 +5,6 @@
     --text-color: #ffffff;
     --text-secondary: rgba(255, 255, 255, 0.9);
     --dark-bg: #121212;
-    --darker-bg: #0a0a0a;
-    --card-bg: #1e1e1e;
     --border-color: #333;
     --hover-color: #2a2a2a;
     --glow-color: rgba(255, 136, 0, 0.2);
@@ -76,7 +74,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--dark-bg);
+    background-color: #121212;
     position: relative;
     opacity: 0;
     animation: fadeIn 0.5s ease-out forwards;
@@ -85,44 +83,58 @@ body {
 
 .orb-1 {
     position: absolute;
-    top: 5%;
-    right: 10%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle at center, var(--accent-color) 0%, transparent 60%);
-    filter: blur(40px);
-    opacity: 0.4;
+    top: -300px;
+    right: -200px;
+    width: 1200px;
+    height: 1200px;
+    background: radial-gradient(circle at center, var(--accent-color) 0%, transparent 80%);
+    filter: blur(90px);
+    opacity: 0.15;
     pointer-events: none;
     animation: orbFloat 20s ease-in-out infinite;
-    z-index: 1;
+    z-index: 0;
 }
 
 .orb-2 {
     position: absolute;
-    top: 70%;
-    left: 5%;
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle at center, var(--secondary-color) 0%, transparent 60%);
-    filter: blur(45px);
-    opacity: 0.45;
+    bottom: 100px;
+    left: -200px;
+    width: 1000px;
+    height: 1000px;
+    background: radial-gradient(circle at center, var(--secondary-color) 0%, transparent 80%);
+    filter: blur(100px);
+    opacity: 0.15;
     pointer-events: none;
     animation: orbFloat 25s ease-in-out infinite reverse;
-    z-index: 1;
+    z-index: 0;
 }
 
 .orb-3 {
     position: absolute;
-    top: 40%;
-    left: 50%;
-    width: 650px;
-    height: 650px;
-    background: radial-gradient(circle at center, var(--accent-color) 0%, transparent 60%);
-    filter: blur(42px);
-    opacity: 0.35;
+    top: 30%;
+    right: -250px;
+    width: 1250px;
+    height: 1250px;
+    background: radial-gradient(circle at center, var(--accent-color) 0%, transparent 80%);
+    filter: blur(95px);
+    opacity: 0.2;
     pointer-events: none;
     animation: orbFloat2 22s ease-in-out infinite;
-    z-index: 1;
+    z-index: 0;
+}
+
+.orb-4 {
+    position: absolute;
+    top: 40%;
+    right: -100px;
+    width: 750px;
+    height: 750px;
+    background: radial-gradient(circle at center, var(--secondary-color) 0%, transparent 70%);
+    filter: blur(55px);
+    opacity: 0.3;
+    pointer-events: none;
+    animation: orbFloat 28s ease-in-out infinite;
+    z-index: 0;
 }
 
 @keyframes orbFloat {
@@ -133,7 +145,7 @@ body {
         transform: translate(20px, -20px) scale(1.05);
     }
     50% {
-        transform: translate(-10px, 30px) scale(0.95);
+        transform: translate(-15px, 25px) scale(0.95);
     }
     75% {
         transform: translate(-25px, -15px) scale(1.02);
@@ -145,10 +157,10 @@ body {
         transform: translate(0, 0) scale(1);
     }
     33% {
-        transform: translate(-30px, 20px) scale(1.1);
+        transform: translate(-25px, 20px) scale(1.08);
     }
     66% {
-        transform: translate(20px, -25px) scale(0.9);
+        transform: translate(20px, -25px) scale(0.92);
     }
 }
 
@@ -160,7 +172,7 @@ body {
 
 /* Header and Navigation */
 header {
-    background-color: rgba(18, 18, 18, 0.95);
+    background-color: rgba(18, 18, 18, 0.8);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255, 136, 0, 0.1);
     position: fixed;
@@ -179,14 +191,25 @@ nav {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    animation: logoGlow 6s ease-in-out infinite;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-text {
     font-size: 1.8rem;
     font-weight: bold;
     color: var(--text-color);
-    animation: wobble 2s ease-in-out infinite;
-    animation-play-state: paused;
 }
 
-.logo:hover {
+.logo-text:hover {
     animation-play-state: running;
 }
 
@@ -245,7 +268,7 @@ nav {
     position: relative;
     overflow: hidden;
     height: 100vh;
-    background: linear-gradient(rgba(18, 18, 18, 0.97), rgba(18, 18, 18, 0.97));
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -260,26 +283,18 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, transparent 0%, var(--dark-bg) 80%);
+    background: none;
     z-index: 1;
     pointer-events: none;
 }
 
 .hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 200px;
-    background: linear-gradient(transparent, var(--dark-bg));
-    z-index: 1;
-    pointer-events: none;
+    display: none;
 }
 
 .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     max-width: 800px;
     padding: 2rem;
     opacity: 0;
@@ -301,6 +316,7 @@ nav {
     font-size: 3rem;
     margin-bottom: 1rem;
     text-shadow: 0 0 20px var(--glow-color);
+    animation: textGlow 8s ease-in-out infinite;
 }
 
 .hero-content p {
@@ -321,6 +337,7 @@ nav {
     font-weight: 500;
     position: relative;
     overflow: hidden;
+    animation: buttonPulse 4s ease-in-out infinite;
 }
 
 .cta-button::before {
@@ -356,6 +373,8 @@ nav {
 section {
     padding: 8rem 2rem;
     position: relative;
+    z-index: 2;
+    background: transparent !important;
     overflow: hidden;
 }
 
@@ -363,12 +382,15 @@ section h2 {
     font-size: 2.5rem;
     margin-bottom: 3rem;
     text-align: center;
+    animation: textGlow 8s ease-in-out infinite;
 }
 
 /* Portfolio Section */
 #portfolio {
     padding: 4rem 0;
-    background-color: var(--darker-bg);
+    background: transparent !important;
+    position: relative;
+    z-index: 2;
     overflow: hidden;
 }
 
@@ -379,10 +401,13 @@ section h2 {
 }
 
 .portfolio-content {
-    background: var(--card-bg);
+    background: rgba(30, 30, 30, 0.5);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 1.5rem;
     border: 1px solid var(--border-color);
+    animation: fadeSlideUp 0.5s ease-out forwards, cardFloat 11s ease-in-out infinite;
+    opacity: 0;
 }
 
 .portfolio-header {
@@ -396,6 +421,7 @@ section h2 {
     background: linear-gradient(135deg, #ff8800, #ff5500);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: textGlow 8s ease-in-out infinite;
 }
 
 .portfolio-header p {
@@ -421,6 +447,7 @@ section h2 {
     background: linear-gradient(135deg, #ff8800, #ff5500);
     color: white;
     box-shadow: 0 2px 8px rgba(255, 136, 0, 0.2);
+    animation: buttonPulse 4s ease-in-out infinite;
 }
 
 .primary-btn:hover {
@@ -437,12 +464,15 @@ section h2 {
 }
 
 .feature-card {
-    background: var(--darker-bg);
+    background: rgba(30, 30, 30, 0.5);
+    backdrop-filter: blur(10px);
     border-radius: 12px;
     padding: 1rem;
     text-align: left;
     border: 1px solid var(--border-color);
     transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), box-shadow 0.3s ease;
+    animation: fadeSlideUp 0.5s ease-out forwards, cardFloat 10s ease-in-out infinite;
+    opacity: 0;
 }
 
 .feature-card:hover {
@@ -466,6 +496,7 @@ section h2 {
     font-size: 0.95rem;
     color: var(--text-color);
     margin-bottom: 0.3rem;
+    animation: textGlow 8s ease-in-out infinite;
 }
 
 .feature-card p {
@@ -525,7 +556,9 @@ section h2 {
 
 /* Services */
 .services {
-    background-color: var(--darker-bg);
+    background: transparent !important;
+    position: relative;
+    z-index: 2;
     text-align: center;
 }
 
@@ -536,12 +569,13 @@ section h2 {
     position: relative;
 }
 
-.services-grid .service-card:nth-child(1) { animation-delay: 0.2s; }
-.services-grid .service-card:nth-child(2) { animation-delay: 0.4s; }
-.services-grid .service-card:nth-child(3) { animation-delay: 0.6s; }
+.services-grid .service-card:nth-child(1) { animation-delay: 0.2s, 0s; }
+.services-grid .service-card:nth-child(2) { animation-delay: 0.4s, 1s; }
+.services-grid .service-card:nth-child(3) { animation-delay: 0.6s, 2s; }
 
 .service-card {
-    background-color: var(--card-bg);
+    background-color: rgba(30, 30, 30, 0.5);
+    backdrop-filter: blur(10px);
     padding: 2.5rem;
     border-radius: 20px;
     text-align: center;
@@ -549,6 +583,8 @@ section h2 {
     transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), box-shadow 0.3s ease;
     border: 1px solid var(--border-color);
     overflow: hidden;
+    animation: fadeSlideUp 0.5s ease-out forwards, cardFloat 8s ease-in-out infinite;
+    opacity: 0;
 }
 
 .service-card i {
@@ -563,6 +599,7 @@ section h2 {
     margin-bottom: 1rem;
     color: var(--text-color);
     text-align: center;
+    animation: textGlow 8s ease-in-out infinite;
 }
 
 .service-card p {
@@ -610,8 +647,9 @@ section h2 {
 
 /* Contact Form */
 .contact {
-    background-color: var(--darker-bg);
+    background: transparent !important;
     position: relative;
+    z-index: 2;
     overflow: hidden;
 }
 
@@ -634,6 +672,7 @@ section h2 {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: textGlow 8s ease-in-out infinite;
 }
 
 .contact-info p {
@@ -699,6 +738,8 @@ section h2 {
     border-radius: 30px;
     border: 1px solid var(--border-color);
     transition: all 0.3s ease;
+    animation: fadeSlideUp 0.5s ease-out forwards;
+    opacity: 0;
 }
 
 .contact-form:hover {
@@ -750,6 +791,7 @@ section h2 {
     cursor: pointer;
     transition: all 0.3s ease;
     width: 100%;
+    animation: buttonPulse 4s ease-in-out infinite;
 }
 
 .submit-btn i {
@@ -826,6 +868,9 @@ section h2 {
     transition: all 0.3s ease;
     border: 1px solid var(--border-color);
     position: relative;
+    z-index: 3;
+    animation: fadeSlideUp 0.5s ease-out forwards;
+    opacity: 0;
 }
 
 .about-content:hover {
@@ -840,6 +885,7 @@ section h2 {
     margin-bottom: 1.5rem;
     text-align: center;
     transition: all 0.3s ease;
+    animation: textGlow 8s ease-in-out infinite;
 }
 
 .about-content:hover h3 {
@@ -959,8 +1005,10 @@ footer {
     border-top-right-radius: 50px;
     margin-top: -50px;
     padding-top: 100px;
-    background-color: var(--darker-bg);
+    background: transparent !important;
     position: relative;
+    z-index: 2;
+    backdrop-filter: blur(10px);
 }
 
 .footer-content {
@@ -973,6 +1021,7 @@ footer {
 
 .footer-section h3 {
     margin-bottom: 1rem;
+    animation: textGlow 8s ease-in-out infinite;
 }
 
 .social-links a {
@@ -1005,7 +1054,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--darker-bg);
+    background-color: rgba(18, 18, 18, 0.95);
     z-index: 9999;
     opacity: 1;
     transition: opacity 0.5s ease-out;
@@ -1021,7 +1070,8 @@ footer {
 .content-wrapper {
     position: relative;
     min-height: 100vh;
-    z-index: 1;
+    z-index: 2;
+    background: transparent;
 }
 
 main {
@@ -1032,4 +1082,89 @@ main {
 footer {
     position: relative;
     z-index: 100;
+}
+
+/* Add subtle floating animation for cards */
+@keyframes cardFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-5px) scale(1.01);
+    }
+}
+
+/* Add hover effects for interactive elements */
+.service-card:hover,
+.feature-card:hover,
+.project-card:hover,
+.portfolio-content:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent-color);
+    transition: all 0.3s ease-out;
+}
+
+/* Add subtle pulse animation to buttons */
+.btn {
+    animation: buttonPulse 4s ease-in-out infinite;
+}
+
+@keyframes buttonPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 rgba(255, 136, 0, 0);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(255, 136, 0, 0.2);
+    }
+}
+
+/* Add subtle glow animation to logo */
+.logo {
+    animation: logoGlow 6s ease-in-out infinite;
+}
+
+@keyframes logoGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 0 rgba(255, 136, 0, 0));
+    }
+    50% {
+        filter: drop-shadow(0 0 8px rgba(255, 136, 0, 0.3));
+    }
+}
+
+/* Add smooth transition for all animated elements */
+.service-card,
+.feature-card,
+.project-card,
+.portfolio-content,
+.btn,
+.logo {
+    transition: all 0.3s ease-out;
+}
+
+/* Add subtle text shadow animation to headings */
+h1, h2, h3 {
+    animation: textGlow 8s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+    0%, 100% {
+        text-shadow: 0 0 0 rgba(255, 136, 0, 0);
+    }
+    50% {
+        text-shadow: 0 0 10px rgba(255, 136, 0, 0.2);
+    }
+}
+
+/* Add fade slide up animation */
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
