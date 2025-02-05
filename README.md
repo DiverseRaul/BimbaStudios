@@ -1,6 +1,6 @@
-# Nova Studios Website
+# Bimba Studios Website
 
-A modern, responsive website for Nova Studios built with HTML5, CSS3, and JavaScript.
+A modern, responsive website for Bimba Studios built with HTML5, CSS3, and JavaScript.
 
 ## Features
 
@@ -16,7 +16,7 @@ A modern, responsive website for Nova Studios built with HTML5, CSS3, and JavaSc
 ## Project Structure
 
 ```
-NovaStudios/
+BimbaStudios/
 ├── css/
 │   └── styles.css
 ├── js/
@@ -48,4 +48,4 @@ The website is compatible with all modern browsers:
 
 ## License
 
-All rights reserved © Nova Studios 2025
+All rights reserved © Bimba Studios 2025
