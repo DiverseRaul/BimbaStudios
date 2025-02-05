@@ -241,3 +241,41 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize carousel
     updateCarousel(currentIndex);
 });
+
+// Loading Screen Handler
+document.addEventListener('DOMContentLoaded', () => {
+    const loadingScreen = document.getElementById('loading-screen');
+    
+    // Function to check if all resources are loaded
+    const checkResourcesLoaded = () => {
+        // Check Font Awesome
+        const testIcon = document.createElement('i');
+        testIcon.className = 'fas fa-cloud-sun';
+        const fontAwesomeLoaded = testIcon.offsetWidth > 0;
+
+        // Check images
+        const images = Array.from(document.images);
+        const imagesLoaded = images.every((img) => img.complete);
+
+        return fontAwesomeLoaded && imagesLoaded;
+    };
+
+    // Hide loading screen with smooth transition
+    const hideLoadingScreen = () => {
+        loadingScreen.classList.add('hidden');
+    };
+
+    // Check resources every 100ms
+    const checkInterval = setInterval(() => {
+        if (checkResourcesLoaded()) {
+            clearInterval(checkInterval);
+            hideLoadingScreen();
+        }
+    }, 100);
+
+    // Fallback: hide loading screen after 3 seconds
+    setTimeout(() => {
+        clearInterval(checkInterval);
+        hideLoadingScreen();
+    }, 3000);
+});
