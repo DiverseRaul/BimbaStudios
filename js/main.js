@@ -117,44 +117,48 @@ window.addEventListener('mousemove', (e) => {
 
 // Portfolio Carousel
 document.addEventListener('DOMContentLoaded', () => {
-    const slides = document.querySelectorAll('.portfolio-content');
-    const dots = document.querySelectorAll('.dot');
     let currentSlide = 0;
+    const slides = document.querySelectorAll('.portfolio-content');
+    const totalSlides = slides.length;
 
-    function updateCarousel() {
-        // Hide all slides
+    function moveCarousel(direction) {
+        // Remove all classes first
         slides.forEach(slide => {
-            slide.classList.remove('active');
+            slide.classList.remove('active', 'prev');
+            slide.style.transform = 'translateX(100%)';
         });
 
-        // Show current slide
-        slides[currentSlide].classList.add('active');
+        // Calculate new slide index
+        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
 
-        // Update dots
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentSlide);
+        // Add active class to current slide
+        slides[currentSlide].classList.add('active');
+        slides[currentSlide].style.transform = 'translateX(-100%)';
+
+        // Add prev class to previous slide
+        const prevSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        slides[prevSlide].classList.add('prev');
+        slides[prevSlide].style.transform = 'translateX(-200%)';
+
+        // Ensure other slides are out of view
+        slides.forEach((slide, index) => {
+            if (index !== currentSlide && index !== prevSlide) {
+                slide.style.transform = 'translateX(100%)';
+            }
         });
     }
 
-    // Initialize carousel
-    updateCarousel();
+    // Initialize first slide
+    moveCarousel(0);
 
-    // Event listeners for buttons
-    window.moveCarousel = (direction) => {
-        currentSlide = (currentSlide + direction + slides.length) % slides.length;
-        updateCarousel();
-    };
-
-    window.setCarousel = (index) => {
-        currentSlide = index;
-        updateCarousel();
-    };
-
-    // Optional: Add keyboard navigation
+    // Add keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (e.key === 'ArrowLeft') moveCarousel(-1);
         if (e.key === 'ArrowRight') moveCarousel(1);
     });
+
+    // Make moveCarousel available globally
+    window.moveCarousel = moveCarousel;
 });
 
 // Loading Screen Handler
