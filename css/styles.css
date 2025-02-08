@@ -402,12 +402,10 @@ section h2 {
 
 .portfolio-content {
     background: rgba(30, 30, 30, 0.5);
-    backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 1.5rem;
     border: 1px solid var(--border-color);
-    animation: fadeSlideUp 0.5s ease-out forwards, cardFloat 11s ease-in-out infinite;
-    opacity: 0;
+    opacity: 1;
 }
 
 .portfolio-header {
@@ -464,20 +462,17 @@ section h2 {
 }
 
 .feature-card {
-    background: rgba(30, 30, 30, 0.5);
-    backdrop-filter: blur(10px);
+    background: rgba(30, 30, 30, 0.8);
+    border: 1px solid rgba(255, 136, 0, 0.1);
     border-radius: 12px;
     padding: 1rem;
-    text-align: left;
-    border: 1px solid var(--border-color);
-    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), box-shadow 0.3s ease;
-    animation: fadeSlideUp 0.5s ease-out forwards, cardFloat 10s ease-in-out infinite;
-    opacity: 0;
+    opacity: 1;
+    position: static;
+    transition: box-shadow 0.3s ease;
 }
 
 .feature-card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(255, 136, 0, 0.15);
 }
 
 .feature-card i {
@@ -569,22 +564,27 @@ section h2 {
     position: relative;
 }
 
-.services-grid .service-card:nth-child(1) { animation-delay: 0.2s, 0s; }
-.services-grid .service-card:nth-child(2) { animation-delay: 0.4s, 1s; }
-.services-grid .service-card:nth-child(3) { animation-delay: 0.6s, 2s; }
+.services-grid .service-card:nth-child(1),
+.services-grid .service-card:nth-child(2),
+.services-grid .service-card:nth-child(3) {
+    animation: none;
+}
 
 .service-card {
-    background-color: rgba(30, 30, 30, 0.5);
-    backdrop-filter: blur(10px);
-    padding: 2.5rem;
-    border-radius: 20px;
+    background: rgba(30, 30, 30, 0.8);
+    border: 1px solid rgba(255, 136, 0, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
     text-align: center;
-    position: relative;
-    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), box-shadow 0.3s ease;
-    border: 1px solid var(--border-color);
-    overflow: hidden;
-    animation: fadeSlideUp 0.5s ease-out forwards, cardFloat 8s ease-in-out infinite;
-    opacity: 0;
+    opacity: 1;
+    position: static;
+    transition: box-shadow 0.3s ease;
+    transform: none;
+}
+
+.service-card:hover {
+    box-shadow: 0 4px 12px rgba(255, 136, 0, 0.15);
+    transform: none;
 }
 
 .service-card i {
@@ -632,17 +632,6 @@ section h2 {
     position: absolute;
     left: 0;
     font-size: 1.2rem;
-}
-
-.service-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent-color);
-    background-color: rgba(255, 136, 0, 0.05);
-}
-
-.service-card:hover i {
-    transform: scale(1.1) rotate(5deg);
-    color: var(--accent-color);
 }
 
 /* Contact Form */
