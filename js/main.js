@@ -117,129 +117,44 @@ window.addEventListener('mousemove', (e) => {
 
 // Portfolio Carousel
 document.addEventListener('DOMContentLoaded', () => {
-    const track = document.querySelector('.carousel-track');
-    const items = document.querySelectorAll('.carousel-item');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    const indicators = document.querySelectorAll('.indicator');
-    
-    let currentIndex = 0;
-    const itemCount = items.length;
-    let isTransitioning = false;
+    const slides = document.querySelectorAll('.portfolio-content');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
 
-    // Update carousel display
-    const updateCarousel = (index) => {
-        if (isTransitioning) return;
-        isTransitioning = true;
-
-        // Update transform
-        track.style.transform = `translateX(-${index * 100}%)`;
-        
-        // Update active states
-        items.forEach((item, i) => {
-            item.classList.toggle('active', i === index);
+    function updateCarousel() {
+        // Hide all slides
+        slides.forEach(slide => {
+            slide.classList.remove('active');
         });
-        
-        // Update indicators
-        indicators.forEach((indicator, i) => {
-            indicator.classList.toggle('active', i === index);
+
+        // Show current slide
+        slides[currentSlide].classList.add('active');
+
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
         });
-        
-        // Update button states
-        prevBtn.style.opacity = index === 0 ? '0.5' : '1';
-        prevBtn.style.pointerEvents = index === 0 ? 'none' : 'auto';
-        nextBtn.style.opacity = index === itemCount - 1 ? '0.5' : '1';
-        nextBtn.style.pointerEvents = index === itemCount - 1 ? 'none' : 'auto';
-
-        // Reset transition flag
-        setTimeout(() => {
-            isTransitioning = false;
-        }, 500); // Match this with the CSS transition duration
-    };
-
-    // Navigation functions with debounce
-    const goToSlide = (index) => {
-        if (isTransitioning) return;
-        currentIndex = Math.max(0, Math.min(index, itemCount - 1));
-        updateCarousel(currentIndex);
-    };
-
-    const nextSlide = () => goToSlide(currentIndex + 1);
-    const prevSlide = () => goToSlide(currentIndex - 1);
-
-    // Event listeners
-    prevBtn.addEventListener('click', prevSlide);
-    nextBtn.addEventListener('click', nextSlide);
-    
-    indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => goToSlide(index));
-    });
-
-    // Touch/Swipe support
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    const handleTouchStart = (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    };
-    
-    const handleTouchEnd = (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    };
-    
-    const handleSwipe = () => {
-        const swipeThreshold = 50;
-        const diff = touchStartX - touchEndX;
-        
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                nextSlide();
-            } else {
-                prevSlide();
-            }
-        }
-    };
-
-    track.addEventListener('touchstart', handleTouchStart);
-    track.addEventListener('touchend', handleTouchEnd);
-
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-            prevSlide();
-        } else if (e.key === 'ArrowRight') {
-            nextSlide();
-        }
-    });
-
-    // Auto-advance carousel
-    let autoplayInterval;
-    const autoplayDelay = 5000; // 5 seconds
-
-    const startAutoplay = () => {
-        autoplayInterval = setInterval(() => {
-            if (currentIndex === itemCount - 1) {
-                goToSlide(0);
-            } else {
-                nextSlide();
-            }
-        }, autoplayDelay);
-    };
-
-    const stopAutoplay = () => {
-        clearInterval(autoplayInterval);
-    };
-
-    // Start autoplay
-    startAutoplay();
-
-    // Pause autoplay on hover
-    track.addEventListener('mouseenter', stopAutoplay);
-    track.addEventListener('mouseleave', startAutoplay);
+    }
 
     // Initialize carousel
-    updateCarousel(currentIndex);
+    updateCarousel();
+
+    // Event listeners for buttons
+    window.moveCarousel = (direction) => {
+        currentSlide = (currentSlide + direction + slides.length) % slides.length;
+        updateCarousel();
+    };
+
+    window.setCarousel = (index) => {
+        currentSlide = index;
+        updateCarousel();
+    };
+
+    // Optional: Add keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') moveCarousel(-1);
+        if (e.key === 'ArrowRight') moveCarousel(1);
+    });
 });
 
 // Loading Screen Handler
