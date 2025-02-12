@@ -115,41 +115,91 @@ window.addEventListener('mousemove', (e) => {
     });
 });
 
-// Portfolio Carousel
+// Portfolio Carousel with Swipe
 document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.querySelector('.portfolio-carousel');
+    const carouselContents = document.querySelectorAll('.portfolio-content');
     let currentSlide = 0;
-    const slides = document.querySelectorAll('.portfolio-content');
-    const totalSlides = slides.length;
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let isDragging = false;
+    let startTime = 0;
+
+    // Show the first slide initially
+    carouselContents[currentSlide].classList.add('active');
 
     function moveCarousel(direction) {
-        // Remove all classes first
-        slides.forEach(slide => {
-            slide.classList.remove('active', 'prev');
-            slide.style.transform = 'translateX(100%)';
-        });
-
-        // Calculate new slide index
-        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-
-        // Add active class to current slide
-        slides[currentSlide].classList.add('active');
-        slides[currentSlide].style.transform = 'translateX(-100%)';
-
-        // Add prev class to previous slide
-        const prevSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        slides[prevSlide].classList.add('prev');
-        slides[prevSlide].style.transform = 'translateX(-200%)';
-
-        // Ensure other slides are out of view
-        slides.forEach((slide, index) => {
-            if (index !== currentSlide && index !== prevSlide) {
-                slide.style.transform = 'translateX(100%)';
-            }
-        });
+        carouselContents[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + direction + carouselContents.length) % carouselContents.length;
+        carouselContents[currentSlide].classList.add('active');
     }
 
-    // Initialize first slide
-    moveCarousel(0);
+    // Touch events for mobile
+    carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        startTime = Date.now();
+        isDragging = true;
+    }, { passive: true });
+
+    carousel.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        touchEndX = e.touches[0].clientX;
+    });
+
+    carousel.addEventListener('touchend', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const touchDuration = Date.now() - startTime;
+        const swipeDistance = touchEndX - touchStartX;
+        const swipeThreshold = 50; // minimum distance for swipe
+        const maxDuration = 300; // maximum time for swipe
+
+        if (touchDuration <= maxDuration && Math.abs(swipeDistance) >= swipeThreshold) {
+            if (swipeDistance > 0) {
+                moveCarousel(-1); // Swipe right, go to previous
+            } else {
+                moveCarousel(1); // Swipe left, go to next
+            }
+        }
+    });
+
+    // Mouse events for desktop
+    carousel.addEventListener('mousedown', (e) => {
+        touchStartX = e.clientX;
+        startTime = Date.now();
+        isDragging = true;
+    });
+
+    carousel.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        touchEndX = e.clientX;
+    });
+
+    carousel.addEventListener('mouseup', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const touchDuration = Date.now() - startTime;
+        const swipeDistance = touchEndX - touchStartX;
+        const swipeThreshold = 50;
+        const maxDuration = 300;
+
+        if (touchDuration <= maxDuration && Math.abs(swipeDistance) >= swipeThreshold) {
+            if (swipeDistance > 0) {
+                moveCarousel(-1);
+            } else {
+                moveCarousel(1);
+            }
+        }
+    });
+
+    // Handle mouse leaving the carousel
+    carousel.addEventListener('mouseleave', () => {
+        isDragging = false;
+    });
 
     // Add keyboard navigation
     document.addEventListener('keydown', (e) => {
@@ -157,8 +207,67 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'ArrowRight') moveCarousel(1);
     });
 
-    // Make moveCarousel available globally
     window.moveCarousel = moveCarousel;
+});
+
+// Menu functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const body = document.body;
+
+    function closeMenu() {
+        navLinks.classList.remove('active');
+        body.style.overflow = 'auto';
+        const icon = menuBtn.querySelector('i');
+        if (icon) {
+            icon.classList.add('fa-bars');
+            icon.classList.remove('fa-times');
+        }
+    }
+
+    function openMenu() {
+        navLinks.classList.add('active');
+        body.style.overflow = 'hidden';
+        const icon = menuBtn.querySelector('i');
+        if (icon) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        }
+    }
+
+    if (menuBtn && navLinks) {
+        // Toggle menu
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (navLinks.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') && 
+                !navLinks.contains(e.target) && 
+                !menuBtn.contains(e.target)) {
+                closeMenu();
+            }
+        });
+
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Handle escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+    }
 });
 
 // Loading Screen Handler
@@ -197,4 +306,10 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(checkInterval);
         hideLoadingScreen();
     }, 3000);
+});
+
+// Smooth scroll for the scroll indicator
+document.querySelector('.scroll-indicator').addEventListener('click', () => {
+    const servicesSection = document.getElementById('services');
+    servicesSection.scrollIntoView({ behavior: 'smooth' });
 });

@@ -18,13 +18,20 @@
                     <img src="Images/BimbaLogo.png" alt="Bimba Studios Logo" class="logo-img">
                     <span class="logo-text">Bimba <span style="color: #ff8800;">Studios</span></span>
                 </div>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Featured Work</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="nav-links">
+                    <div class="nav-links-container">
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#portfolio">Featured Work</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
         </header>
 
@@ -37,6 +44,26 @@
                         <a href="#contact" class="cta-button">Start Your Project</a>
                         <p class="hero-subtitle">Game Development • Mobile Apps • Websites</p>
                     </div>
+                    <div class="hero-grid">
+                        <div class="hero-feature">
+                            <i class="fas fa-gamepad"></i>
+                            <h3>Game Development</h3>
+                            <p>Making immersive gaming experiences for players across platforms</p>
+                        </div>
+                        <div class="hero-feature">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Mobile Apps</h3>
+                            <p>Build powerful mobile applications that engage and delight users</p>
+                        </div>
+                        <div class="hero-feature">
+                            <i class="fas fa-globe"></i>
+                            <h3>Web Solutions</h3>
+                            <p>Develop modern web applications that drive results and impact</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="scroll-indicator">
+                    <i class="fas fa-chevron-down"></i>
                 </div>
             </section>
 
@@ -204,12 +231,6 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="carousel-btn next-btn" onclick="moveCarousel(1)">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
                     </div>
                 </div>
             </section>
