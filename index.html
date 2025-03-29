@@ -3,227 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#ff8800">
     <title>Bimba Studios</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="Images/BimbaLogo.png">
-    <link rel="apple-touch-icon" href="Images/BimbaLogo.png">
-    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="content-wrapper">
-        <header>
+    <header id="main-header">
+        <div class="container">
+            <h1 class="logo">Bimba Studios</h1>
             <nav>
-                <div class="logo">
-                    <img src="Images/BimbaLogo.png" alt="Bimba Studios Logo" class="logo-img">
-                    <span class="logo-text">Bimba <span style="color: #ff8800;">Studios</span></span>
-                </div>
-                <button class="mobile-menu-btn" aria-label="Toggle menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="nav-links">
-                    <div class="nav-links-container">
-                        <ul>
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#services">Services</a></li>
-                            <li><a href="#portfolio">Featured Work</a></li>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
             </nav>
-        </header>
+        </div>
+    </header>
 
-        <main>
-            <section id="home" class="hero">
-                <div class="hero-content">
-                    <h1>Welcome to <span style="color: #ff8800;">Bimba Studios</span></h1>
-                    <p>Bringing Your Digital Dreams to Life</p>
-                    <div class="cta-wrapper">
-                        <a href="#contact" class="cta-button">Start Your Project</a>
-                        <p class="hero-subtitle">Game Development • Mobile Apps • Websites</p>
-                    </div>
-                    <div class="hero-grid">
-                        <div class="hero-feature">
-                            <i class="fas fa-gamepad"></i>
-                            <h3>Game Development</h3>
-                            <p>Making immersive gaming experiences for players across platforms</p>
-                        </div>
-                        <div class="hero-feature">
-                            <i class="fas fa-mobile-alt"></i>
-                            <h3>Mobile Apps</h3>
-                            <p>Build powerful mobile applications that engage and delight users</p>
-                        </div>
-                        <div class="hero-feature">
-                            <i class="fas fa-globe"></i>
-                            <h3>Web Solutions</h3>
-                            <p>Develop modern web applications that drive results and impact</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="scroll-indicator">
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-            </section>
+    <main>
+        <section id="hero">
+            <canvas id="particle-canvas"></canvas>
+            <div class="container hero-content">
+                <h2>Crafting Digital Experiences</h2>
+                <p>Modern Websites & Innovative Apps Tailored For You.</p>
+                <a href="#contact" class="cta-button">Get Started</a>
+            </div>
+        </section>
 
-            <section id="services" class="services">
-                <div class="container">
-                    <h2>Our <span style="color: #ff8800;">Services</span></h2>
-                    <div class="services-grid">
-                        <div class="service-card">
-                            <i class="fas fa-gamepad"></i>
-                            <h3>Game Development</h3>
-                            <p>Creating immersive gaming experiences for PC, mobile, and consoles. From concept to launch, we bring your game ideas to life.</p>
-                            <ul class="service-features">
-                                <li>3D Games</li>
-                                <li>2D Games</li>
-                                <li>Roblox&copy</li>
-                                <li>Game Design & Mechanics</li>
-                            </ul>
-                        </div>
-                        <div class="service-card">
-                            <i class="fas fa-mobile-alt"></i>
-                            <h3>Mobile Apps</h3>
-                            <p>Building powerful, user-friendly mobile applications for iOS and Android platforms that engage and delight users.</p>
-                            <ul class="service-features">
-                                <li>IOS</li>
-                                <li>Android</li>
-                                <li>UI/UX Design</li>
-                            </ul>
-                        </div>
-                        <div class="service-card">
-                            <i class="fas fa-globe"></i>
-                            <h3>Web Development</h3>
-                            <p>Crafting modern, responsive websites and web applications that make an impact and drive results.</p>
-                            <ul class="service-features">
-                                <li>Custom Websites</li>
-                                <li>School Applications</li>
-                                <li>Productivity Tools</li>
-                                <li>More</li>
-                            </ul>
-                        </div>
-                    </div>
+        <section id="products">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Products</h2>
+                    <p>Innovative solutions designed to enhance your digital presence</p>
                 </div>
-            </section>
-
-            <section id="portfolio">
-                <div class="container">
-                    <div class="section-header">
-                        <h2>Featured <span style="color: #ff8800;">Work</span></h2>
+                
+                <div class="products-carousel-container">
+                    <div class="carousel-nav prev-btn">
+                        <i class="fas fa-chevron-left"></i>
                     </div>
-                    <div class="portfolio-grid">
-                        <div class="portfolio-item">
-                            <h3><i class="fas fa-cloud-sun"></i> <span style="color: #ff8800;">Bimba</span> Weather</h3>
-                            <p>Modern, Sleek, Clean Weather forecast app!</p>
-                            <a href="https://weather.bimba.studio/" target="_blank" rel="noopener noreferrer" class="portfolio-btn">View Project</a>
-                        </div>
-                        <div class="portfolio-item">
-                            <h3><i class="fas fa-trophy"></i> <span style="color: #ff8800;">Bimba</span> Tourney</h3>
-                            <p>Create tournaments for you and your friends!</p>
-                            <a href="https://tourney.bimba.studio/" target="_blank" rel="noopener noreferrer" class="portfolio-btn">View Project</a>
-                        </div>
-                        <div class="portfolio-item">
-                            <h3><i class="fas fa-futbol"></i> <span style="color: #ff8800;">Bimba</span> Bolao</h3>
-                            <p>Manage, Create and compete in Bolao's</p>
-                            <a href="https://bolao.bimba.studio/" target="_blank" rel="noopener noreferrer" class="portfolio-btn">View Project</a>
-                        </div>
-                    </div>
-                </div>
-                <a href="https://products.bimba.studio/" target="_blank" rel="noopener noreferrer" class="More-Products">More Products</a>
-            </section>
-
-            <section id="about" class="about">
-                <div class="container">
-                    <h2>About <span style="color: #ff8800;">Us</span></h2>
-                    <div class="about-grid">
-                        <div class="about-content">
-                            <h3>Our Studio</h3>
-                            <p><span style="color: #ff8800;">Bimba Studios</span> is a digital innovation studio that brings your visions to life. Specializing in web development, game creation, and interactive experiences, we blend creativity and technology to deliver captivating and high-impact solutions. From sleek websites that shine to engaging games that enthrall, we empower brands and individuals to thrive in the digital age. </p>
-                        </div>
-                        <div class="about-content creator-box">
-                            <h3>The Creator</h3>
-                            <div class="creator-info">
-                                <img src="assets/creator-avatar.jpg" alt="Creator" class="creator-avatar">
-                                <div class="creator-details">
-                                    <h4>Raul</h4>
-                                    <p class="creator-title">Founder & Lead Developer</p>
-                                </div>
+                    
+                    <div class="products-carousel">
+                        <!-- Product 1 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="Images/BimbaWeather.png" alt="Bimba Weather" class="product-icon">
                             </div>
-                            <p>As the founder of <span style="color: #ff8800;">Bimba Studios</span>, I brought my passion for game development, app creation, and web design to every project, Starting off in 4th grade, as a wonderkid for Roblox game developing, it came to my realization that I wanted more, not just a hobby, but as a dream. After many years of studying and practice, i have made many projects so far that I am enthusiastic to publish out to the public!</p>
-                            <div class="creator-links">
-                                <a href="https://github.com/yourgithub" target="_blank"><i class="fab fa-github"></i></a>
-                                <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
-                                <a href="https://twitter.com/yourhandle" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <div class="product-content">
+                                <h3 class="product-title">Bimba Weather</h3>
+                                <p class="product-description">Modern, Sleek, Clean Weather forecast app!</p>
+                                <a href="https://weather.bimba.studio" target="_blank" class="product-link">Visit!</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 2 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="Images/BimbaBolao.png" alt="Bimba Bolao" class="product-icon">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Bimba Bolao</h3>
+                                <p class="product-description">Create, Join and Manage Bolaos with friends!</p>
+                                <a href="https://bolao.bimba.studio" target="_blank" class="product-link">Visit!</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 3 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="Images/BimbaSchool.png" alt="Bimba School" class="product-icon">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Bimba School</h3>
+                                <p class="product-description">Complete your school life with your all in one app!</p>
+                                <a href="https://school.bimba.studio" target="_blank" class="product-link">Visit!</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 4 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="Images/BimbaBit.png" alt="Bimba Bit" class="product-icon">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Bimba Bit</h3>
+                                <p class="product-description">Interactive file size calculator</p>
+                                <a href="https://bit.bimba.studio" target="_blank" class="product-link">Visit!</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 5 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="Images/BimbaAI.png" alt="Bimba AI Studio" class="product-icon">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Bimba AI Studio</h3>
+                                <p class="product-description">Modern AI testing.</p>
+                                <a href="https://ai.bimba.studio" target="_blank" class="product-link">Visit!</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Product 6 -->
+                        <div class="product-card">
+                            <div class="product-img">
+                                <img src="Images/BimbaCountdown.png" alt="Bimba Countdown" class="product-icon">
+                            </div>
+                            <div class="product-content">
+                                <h3 class="product-title">Bimba Countdown</h3>
+                                <p class="product-description">Countdown and see time to your next event!</p>
+                                <a href="https://countdown.bimba.studio" target="_blank" class="product-link">Visit!</a>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            <section id="contact">
-                <div class="container">
-                    <div class="section-header">
-                        <h2>Contact <span style="color: #ff8800;">Us</span></h2>
-                        <p>Get in touch with us</p>
+                    
+                    <div class="carousel-nav next-btn">
+                        <i class="fas fa-chevron-right"></i>
                     </div>
-                    <div class="contact-container">
-                        <div class="contact-info">
-                            <div class="contact-details">
-                                <h3>Contact Info</h3>
-                                <p>Got an idea? Give it to us and you can be part of it</p>
-                                <div class="contact-item">
-                                    <i class="fas fa-envelope"></i>
-                                    <span>contact@bimba.studio</span>
-                                </div>  
-                            </div>
-                            <div class="social-links">
-                                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                        <div class="contact-form">
-                            <form id="contactForm">
-                                <div class="form-group">
-                                    <input type="text" id="name" name="name" placeholder="Your Name" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" id="email" name="email" placeholder="Your Email" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" id="subject" name="subject" placeholder="Subject" required>
-                                </div>
-                                <div class="form-group">
-                                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-                                </div>
-                                <button type="submit" class="submit-btn">Send Message</button>
-                            </form>
-                        </div>
+                    
+                    <div class="carousel-indicators">
+                        <!-- Indicators will be dynamically added via JS -->
                     </div>
                 </div>
-            </section>
-        </main>
-
-        <footer>
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Bimba Studios</h3>
-                    <p>Creating projects since 2023</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>Email: contact@bimba.studio</p>
-                    <p>Phone: (555) 123-4567</p>
+                
+                <div class="view-all-container">
+                    <a href="https://products.bimba.studio" target="_blank" class="view-all-btn">View All Products</a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Bimba Studios. All rights reserved.</p>
-            </div>
-        </footer>
-    </div>
+        </section>
 
-    <div id="loading-screen"></div>
+        <section id="about" style="height: 50vh; padding: 50px; background-color: #1a1a1a;"><!-- Temporary -->
+             <div class="container">
+                 <h2 style="color: #fff; text-align: center;">About Section (Coming Soon)</h2>
+             </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Get in Touch</h2>
+                    <p>Have a project in mind? Let's discuss it!</p>
+                </div>
+                
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="icon-container">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Email Us</h3>
+                                <p>contact@bimba.studio</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="icon-container">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Find Us on GitHub</h3>
+                                <p><a href="https://github.com/diverseraul" target="_blank" class="contact-link">github.com/diverseraul</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="icon-container">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h3>Connect on LinkedIn</h3>
+                                <p><a href="https://linkedin.com/in/raul-rodrigues-05667334a" target="_blank" class="contact-link">linkedin.com/in/raul-rodri...</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-container">
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Send Message</button>
+                            <div id="form-status" class="form-status"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Bimba Studios. All Rights Reserved.</p>
+            <p>Developed by Raul Rodrigues</p>
+            <p>UI: v2.1 - BimbaOS: v1.0</p>
+        </div>
+    </footer>
 
     <script src="js/main.js"></script>
 </body>
